@@ -1,0 +1,52 @@
+﻿@model OrderBookViewModel
+<div class="container-fluid">
+    <form asp-action="Book" asp-controller="Order" method="post">
+        <section class="text-center my-5">
+            <div class="row">
+
+
+                <!-- Grid column -->
+                <div class="col-md-6 col-lg-4 col-xl-3  mt-2">
+                    <!-- Card -->
+                    <div class="card card-columns bg-warning">
+                        <!-- Card image -->
+                        <div class="card-img">
+                            <img src="~/@Model.PackImage" class=" w-100 img-fluid  img-thumbnail" style="height:250px" alt="Responsive image">
+                        </div>
+                        <!-- Card image -->
+                        <!-- Card content -->
+                        <div class="text-secondary card-body text-center my-0">
+                            <!-- Category & Title -->
+                            <p>
+                                <h5 class=" font-weight-bold">@Model.PackName</h5>
+                            </p>
+                            <h4 class="card-title text-dark">
+                                <strong>
+                                    <a href="">@Model.PackLocation</a>
+                                </strong>
+                            </h4>
+
+                            <!--Description-->
+                            <p class="card-text font-italic text-secondary ">
+                                @Model.PackDescription
+                            </p>
+                            <div class="px-1">
+                                <span class="float-left font-weight-bold text-white p-2 rounded " style="border:1px solid;height:40px">
+                                    <strong>Price: @Model.PackPrice</strong>
+                                    <input asp-for="PackPrice" type="hidden" />
+                                    <input asp-for="PackagId" type="hidden" />
+                                </span>
+                            </div>
+                            <div class="px-1">
+                                <span class="">
+                                   <input type="submit" value="Confirm booking" class="btn btn-info font-weight-bold float-right" />
+                                </span>
+                            </div>
+                        </div>
+                       </div>
+                </div>
+            </div>
+        </section>
+    </form>
+</div>
+

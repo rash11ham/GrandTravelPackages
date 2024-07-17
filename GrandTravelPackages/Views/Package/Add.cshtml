@@ -1,0 +1,50 @@
+﻿@model PackageAddViewModel
+
+
+<div class="col-md-4 mx-md-auto mt-5">
+    <h1>Add Packages</h1>
+
+    <form asp-action="Add" asp-controller="Package" method="post" enctype="multipart/form-data">
+
+        <div asp-validation-summary="ModelOnly"></div>
+
+
+        <div class="form-group font-weight-bold">
+            <i class="fa fa-user mr-2"></i><label asp-for="PackName"></label>
+            <input asp-for="PackName" class="form-control" />
+            <span asp-validation-for="PackName"></span>
+        </div>
+
+        <div class="form-group font-weight-bold">
+            <i class="fa fa-key mr-2" aria-hidden="true"></i><label asp-for="PackLocation"></label>
+            <input asp-for="PackLocation" class="form-control" />
+            <span asp-validation-for="PackLocation"></span>
+        </div>
+        <div class="form-group font-weight-bold">
+            <i class="fa fa-key mr-2" aria-hidden="true"></i><label asp-for="PackDescription"></label>
+            <input asp-for="PackDescription" class="form-control" />
+            <span asp-validation-for="PackDescription"></span>
+        </div>
+
+        <div class="form-group font-weight-bold">
+            <i class="fa fa-key mr-2" aria-hidden="true"></i><label asp-for="PackPrice"></label>
+            <input asp-for="PackPrice" class="form-control" />
+            <span asp-validation-for="PackPrice"></span>
+        </div>
+
+        <div class="form-group font-weight-bold">
+            <i class="fa fa-picture-o" aria-hidden="true"></i><label asp-for="PackImage"></label>
+            <input type="file" name="file" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="PackageStatus" style="display:inline-block; width:100px"></label>
+            <select asp-for="PackageStatus"
+                    asp-items="@Html.GetEnumSelectList(typeof(GrandTravelPackages.Models.PackageStatusEnum))"></select>
+            <span style="color:red" asp-validation-for="PackageStatus"></span>
+        </div>
+
+        <div>
+            <input class="btn btn-warning" type="submit" value="Add" />
+        </div>
+    </form>
+</div>

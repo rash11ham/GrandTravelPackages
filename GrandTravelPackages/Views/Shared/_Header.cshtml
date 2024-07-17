@@ -1,0 +1,117 @@
+﻿
+    <div class="col-md-1 mr-md-1  ">
+        <img class="img-thumbnail border-primary mt-4" src="~/images/Logo 21.png" />
+    </div>
+    <div class="col-md-2 mr-md-1">
+        <div class="card-overlay mr-5"><h2 class="card-title text-center mt-5 text-white font-weight-bold font-italic">GETAWAY TRAVELS</h2></div>
+    </div>
+    <div class="col-md my-5 ">
+
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div>
+                <a class="nav-link btn btn-warning mr-2 text-white font-weight-bold" asp-action="Index" asp-controller="Home">Home</a>
+
+            </div>
+            <!-- About us droppdown -->
+            <ul class="navbar-nav mr-2">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle btn btn-warning text-white font-weight-bold" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-info-circle mr-2" aria-hidden="true"></i>About us</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" asp-action="Contact" asp-controller="Home">Contact</a>
+                        <a class="dropdown-item" asp-action="PriPolicy" asp-controller="Home">Privacy Policey</a>
+                        <a class="dropdown-item" asp-action="TOfUse" asp-controller="Home">Term of Use</a>
+                        <a class="dropdown-item" asp-action="ComBg" asp-controller="Home">Background</a>
+                    </div>
+                </li>
+
+            </ul>
+
+
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item active mr-2">
+                            <a class="nav-link btn btn-warning text-white font-weight-bold" asp-action="Logout" asp-controller="Account"><i class="fa fa-sign-out mr-2" aria-hidden="true"></i>Logout</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+
+
+                            <a class="nav-link dropdown-toggle btn btn-warning text-white font-weight-bold" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-pencil-square-o mr-2" aria-hidden="true"></i>Update</a>
+                            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                                @if (User.IsInRole("Customer"))
+                                {
+                                    <a class="dropdown-item" asp-action="UpdateProfile" asp-controller="Customer"><img class="mr-2" style="width:30px" src="~/images/update Icon.jpg" />Profile</a>
+                                    <a class="dropdown-item" asp-action="PasswordUpdate" asp-controller="Customer"><img class="mr-2" style="width:30px" src="~/images/update Icon.jpg" />Password</a>
+
+                                }
+                                else if (User.IsInRole("TravelProvider"))
+                                {
+                                    <a class="dropdown-item" asp-action="ProviderUpdate" asp-controller="TravelProvider"><img class="mr-2" style="width:30px" src="~/images/update Icon.jpg" />Profile</a>
+                                    <a class="dropdown-item" asp-action="PasswordUpdate" asp-controller="TravelProvider"><img class="mr-2" style="width:30px" src="~/images/update Icon.jpg" />Password</a>
+                                    @*<a class="dropdown-item" asp-action="Update" asp-controller="Package"><img class="mr-2" style="width:30px" src="~/images/update Icon.jpg" />Package</a>*@
+
+                                }
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+
+                            <a class="nav-link btn btn-warning mr-2 text-white font-weight-bold" asp-action="Login" asp-controller="Account"><i class="fa fa-sign-in mr-2" aria-hidden="true"></i>Login</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle btn btn-warning text-white font-weight-bold" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle mr-2" aria-hidden="true"></i>Register</a>
+                            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" asp-action="Register" asp-controller="Account"><i class="fa fa-id-badge mr-2" aria-hidden="true"></i>Customer Register</a>
+                                <a class="dropdown-item" asp-action="ProviderRegister" asp-controller="Account"><i class="fa fa-id-badge mr-2" aria-hidden="true"></i>Provider Register</a>
+                            </div>
+                        </li>
+
+
+                    }
+
+
+
+
+                </ul>
+                <!-- Links -->
+
+                <form class="form-inline" method="get" asp-action="Index">
+                    <!-- Dropdown -->
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle btn btn-info text-white font-weight-bold" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <input name="MinPrice" value="@ViewData["MinPrice"]" class="form-control" type="number" placeholder="FilterMinPrice" aria-label="Filter">
+                            <input name="MaxPrice" value="@ViewData["MaxPrice"]" class="form-control" type="number" placeholder="FilterMaxPrice" aria-label="Filter">
+
+                        </div>
+                    </div>
+                    <div class="md-form mt-0">
+                        <input data-val="true" data-val-required="Search location is required" name="SearchLocation" value="@ViewData["PackLocation"]" class="form-control " type="text" placeholder="Search" aria-label="Search">
+                        <button type="submit" value="Search" class="btn btn-info "><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <span></span>
+
+                    </div>
+
+                </form>
+            </div>
+            <!-- Collapsible content -->
+
+        </nav>
+    </div>
+

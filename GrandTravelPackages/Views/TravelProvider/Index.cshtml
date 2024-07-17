@@ -1,0 +1,98 @@
+﻿@model TravelProviderIndexViewModel
+
+
+<div class="container-fluid">
+    <div class="row">
+
+        
+            <nav class="profile-nav col-md-12">
+                <h1 class=" text-secondary d-inline-flex">@User.Identity.Name</h1>
+                <a class="btn btn-info text-white mt-1 float-right" asp-action="Add" asp-controller="Package">Add Packages</a>
+            </nav>
+            
+       
+
+
+    </div>
+
+    <div>
+        <h5 class="ml-4">@ViewBag.MyMessage </h5>
+    </div>
+    
+    <section class="text-center my-5">
+        <div class="row">
+
+            @foreach (var item in Model.GetPackage)
+    {
+
+
+        <!-- Grid column -->
+            <div class="col-md-6 col-lg-4 col-xl-3  mt-2">
+
+
+                <!-- Card -->
+                <div class="card card-columns bg-warning">
+                    <!-- Card image -->
+                    <div class="card-img">
+                        <img src="~/@item.PackImage" class=" w-100 img-fluid  img-thumbnail" style="height:250px" alt="Responsive image">
+                    </div>
+                    <!-- Card image -->
+                    <!-- Card content -->
+                    <div class="text-secondary card-body text-center my-0">
+                        <!-- Category & Title -->
+                        <p>
+                            <h5 class=" font-weight-bold">@item.PackName</h5>
+                        </p>
+                        <h4 class="card-title text-dark">
+                            <strong>
+                                <a href="">@item.PackLocation</a>
+                            </strong>
+                        </h4>
+
+                        <!--Description-->
+                        <p class="card-text font-italic text-secondary ">
+                            @item.PackDescription
+                        </p>
+                        <!-- Card footer -->
+                        <div class="px-1">
+                            <span class="float-left font-weight-bold text-white p-2 rounded " style="border:1px solid;height:40px">
+                                <strong>Price: @item.PackPrice</strong>
+                            </span>
+                        </div>
+                        <div class="px-1">
+
+
+                            <span class="">
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+                    {
+                        @*<a class="btn btn-success btn-rounded font-weight-bold" asp-action="Book" asp-controller="Order" new {id = item.PackageId}>Book Now</a>*@
+                        @Html.ActionLink("Book Now", "Book", "Order", new { id = item.PackageId })
+        }
+
+                            </span>
+                            <span class="">
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("TravelProvider"))
+                    {
+
+                        @Html.ActionLink("Update", "Update", "Package", null, new { id = item.PackageId, @class = "btn btn-info font-weight-bold float-right" })
+
+        }
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Card content -->
+                </div>
+                <!-- Card -->
+
+
+            </div>
+        <!-- Grid row -->
+}
+
+        </div>
+    </section>
+</div>
+
+
+
+

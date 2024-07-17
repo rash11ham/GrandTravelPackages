@@ -1,0 +1,41 @@
+﻿ @model AccountLoginViewModel
+
+
+<div class="col-md-4 mx-md-auto mt-5">
+    <h1 class="">Login</h1>
+    <form asp-action="Login" asp-controller="Account" method="post" asp-route-returnurl="@Model.ReturnUrl">
+
+        <div asp-validation-summary="ModelOnly"></div>
+
+        <div class="form-group font-weight-bold">
+
+            <i class="fa fa-user mr-2"></i><label asp-for="UserName"></label>
+            <input asp-for="UserName" placeholder="Please place your user name here" class="form-control" />
+            <span asp-validation-for="UserName"></span>
+        </div>
+
+        <div class="form-group font-weight-bold">
+            <i class="fa fa-key mr-2" aria-hidden="true"></i><label asp-for="Password"></label>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password"></span>
+        </div>
+
+        @*<div class="form-group">
+            <label asp-for="RememberMe"></label>
+            <input asp-for="RememberMe" class="form-control" />
+            <span asp-validation-for="RememberMe"></span>
+        </div>*@
+
+        <div class="checkbox font-weight-bold mb-4">
+            @Html.CheckBoxFor(r => r.RememberMe) Remember Me
+        </div>
+
+        <div>
+           
+
+            <input type="submit" value="Login" class="btn btn-outline-primary" />
+        </div>
+    </form>
+</div>
+
+

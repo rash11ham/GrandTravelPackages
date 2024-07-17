@@ -1,0 +1,66 @@
+﻿@model HomeIndexViewModel
+
+<div class="container-fluid">
+    @{
+        Html.RenderPartial("SlideShow");
+    }
+    <div>
+        <h5>@ViewBag.MyMessage </h5>
+    </div>
+    <div class="row text-center my-1">
+
+
+
+        @foreach (var item in Model.Packages)
+        {
+
+            <!-- Grid column -->
+            <div class="col-md-6 col-lg-4 col-xl-3  mt-2">
+
+
+                <!-- Card -->
+                <div class="card card-columns bg-warning">
+                    <!-- Card image -->
+                    <div class="card-img">
+                        <img src="~/@item.PackImage" class=" w-100 img-fluid  img-thumbnail" style="height:250px" alt="Responsive image">
+                    </div>
+                    <!-- Card image -->
+                    <!-- Card content -->
+                    <div class="text-secondary card-body text-center my-0">
+                        <!-- Category & Title -->
+                        <p>
+                            <h5 class=" font-weight-bold">@item.PackName</h5>
+                        </p>
+                        <h4 class="card-title text-dark">
+                            <strong>
+                                <a href="">@item.PackLocation</a>
+                            </strong>
+                        </h4>
+
+                        <!--Description-->
+                        <p class="card-text font-italic text-secondary ">
+                            @item.PackDescription
+                        </p>
+                        <!-- Card footer -->
+                        <div class="px-1">
+                            <span class="float-left font-weight-bold text-white p-2 rounded " style="border:1px solid;height:40px">
+                                <strong>Price: @item.PackPrice</strong>
+                            </span>
+                        </div>
+                        <div class="px-1">
+                            @Html.ActionLink("Book Now", "Login", "Account", null, new { @class = "btn btn-info font-weight-bold float-right" })
+
+                        </div>
+                    </div>
+                    <!-- Card content -->
+                </div>
+                <!-- Card -->
+
+
+            </div>
+            <!-- Grid row -->
+        }
+    </div>
+
+</div>
+

@@ -1,0 +1,72 @@
+﻿
+@model CustomerOrderViewModel
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <nav class="profile-nav">
+
+                <h1 class=" text-primary">@User.Identity.Name</h1>
+            </nav>
+        </div>
+        <div class="cover-photo col-10">
+
+
+
+            <div class="pb-0 mb-0 ">
+                <a class="btn btn-primary" asp-action="Index" asp-controller="Customer">Back</a>
+            </div>
+
+        </div>
+        <div class="col-2 ">
+            <div class="inner w-100 h-50 img-fluid "> <img src="~/images/@Model.GetCustomer.ProfilePhoto" class="img-thumbnail"></div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<section class="text-center my-5">
+    <div class="row">
+        @foreach (var item in Model.GetOrders)
+        {
+
+            <!-- Grid column -->
+        <div class="col-md-4 mb-2 mt-2">
+
+            <div class="view overlay">
+                
+                <!-- Card -->
+                <div class="card card-columns">
+                    <!-- Card image -->
+
+                    <span class="float-left font-weight-bold">
+                        <strong>Package Num: @item.PackagId</strong>
+                    </span>
+                    <span class="float-left font-weight-bold">
+                        <strong>Order Num: @item.OrderId</strong>
+                    </span>
+                    <span class="float-left font-weight-bold">
+                        <strong>BookingStatus: @item.Status</strong>
+                    </span>
+                    <span class="float-left font-weight-bold">
+                        <strong>BookingDate: @item.Date</strong>
+                    </span>
+                    <span class="float-left font-weight-bold text-danger">
+                        <strong>Price: @item.Price</strong>
+                    </span>
+
+                </div>                
+                <!-- Card content -->
+            </div>
+            <!-- Card -->
+
+
+        </div>
+            <!-- Grid row -->
+        }
+    </div>
+</section>
+

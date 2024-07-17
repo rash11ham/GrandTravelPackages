@@ -1,0 +1,67 @@
+﻿@model CustomerRegisterViewModel
+
+
+<div class="col-md-4 mx-md-auto mt-5">
+<h1>Register Customer</h1>
+
+<form asp-action="Register" asp-controller="Account" method="post" enctype="multipart/form-data">
+
+    <div asp-validation-summary="ModelOnly"></div>
+
+
+    <div class="form-group font-weight-bold">
+        <i class="fa fa-user mr-2"></i><label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+
+    <div class="form-group font-weight-bold">
+        <i class="fa fa-key mr-2" aria-hidden="true"></i><label asp-for="Password"></label>
+        <input type="password" asp-for="Password" class="form-control"/>
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <div class="form-group font-weight-bold">
+        <i class="fa fa-key mr-2" aria-hidden="true"></i><label asp-for="ConfirmPassword"></label>
+        <input type="password" asp-for="ConfirmPassword" class="form-control" />
+        <span asp-validation-for="ConfirmPassword"></span>
+    </div>
+
+    <div class="form-group font-weight-bold">
+        <i class="fa fa-user mr-2" aria-hidden="true"></i><label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName"></span>
+    </div>
+    <div class="form-group font-weight-bold">
+        <i class="fa fa-user mr-2" aria-hidden="true"></i><label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName"></span>
+    </div>
+        <div class="form-group font-weight-bold">
+            <i class="fa fa-phone mr-2"></i><label asp-for="Mobile"></label>
+            <input asp-for="Mobile" class="form-control"/>
+            <span asp-validation-for="Mobile"></span>
+        </div>
+        <div class="form-group font-weight-bold">
+            <i class="fa fa-address-card mr-2" aria-hidden="true"></i><label asp-for="Address"></label>
+            <input asp-for="Address" class="form-control"/>
+            <span asp-validation-for="Address"></span>
+        </div>
+        <div class="form-group font-weight-bold">
+            <i class="fa fa-envelope mr-2" aria-hidden="true"></i><label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control"/>
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group font-weight-bold">
+            <i class="fa fa-picture-o" aria-hidden="true"></i><label asp-for="ProfilePhoto"></label>
+            <input type="file" name="file" class="form-control" />
+           
+        </div>
+
+    <div>
+        <input class="btn btn-warning" type="submit" value="Register" />
+    </div>
+</form>
+</div>
+
+

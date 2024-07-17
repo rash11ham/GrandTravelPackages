@@ -1,0 +1,98 @@
+﻿
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==== */
+
+.site-header {
+    height: 44px;
+    width: 100%;
+    border-bottom: 1px solid #E1e1e1;
+}
+
+.cover-photo {
+    width: 980px;
+    height: 155px;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    position: relative;
+    z-index: 1;
+}
+
+/*.body {
+    width: 980px;
+    margin: 0 auto;
+    z-index: 4;
+    position: relative;
+}*/
+
+.left-col, .right-col {
+    width: 226px;
+    float: left;
+    min-height: 400px;
+    position: relative;
+}
+
+.left-col {
+    margin-right: 24px;
+    position: relative;
+    top: -150px;
+    left: 8px;
+}
+
+.center-col {
+    float: left;
+    width: 480px;
+    margin-right: 24px;
+    min-height: 400px;
+}
+
+.right-col {
+    background-color: blue;
+}
+
+/* LEFT COL */
+
+
+
+
+
+.profile-avatar {
+    width: 218px;
+    height: 218px;
+    border: 1px solid #e1e1e1;
+    background-color: #fff;
+    right: 0;
+   
+}
+
+/* CENTER */
+
+.image-grid {
+    width: 100%;
+}
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
